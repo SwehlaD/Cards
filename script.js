@@ -116,7 +116,6 @@ UI.scrollContainer?.addEventListener("scroll", () => {
   requestAnimationFrame(updateCarouselVisuals);
 });
 
-// ========================= CARD CLICK =========================
 // ========================= CARD CLICK: FLIP & SHOWCASE =========================
 UI.scrollContainer?.addEventListener("click", e => {
   const card = e.target.closest(".release-card");
