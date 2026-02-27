@@ -117,6 +117,7 @@ UI.scrollContainer?.addEventListener("scroll", () => {
 });
 
 // ========================= CARD CLICK =========================
+// ========================= CARD CLICK: FLIP & SHOWCASE =========================
 UI.scrollContainer?.addEventListener("click", e => {
   const card = e.target.closest(".release-card");
   if (!card) return;
@@ -124,17 +125,29 @@ UI.scrollContainer?.addEventListener("click", e => {
   // Center clicked card
   const containerRect = UI.scrollContainer.getBoundingClientRect();
   const cardRect = card.getBoundingClientRect();
-  const offset = cardRect.left - containerRect.left - containerRect.width / 2 + cardRect.width / 2;
+  const offset =
+    cardRect.left -
+    containerRect.left -
+    containerRect.width / 2 +
+    cardRect.width / 2;
+
   UI.scrollContainer.scrollBy({ left: offset, behavior: "smooth" });
 
-  // Flip clicked card and showcase
-  allCards.forEach(c => c.classList.remove("showcase"));
-  card.classList.add("flipped", "showcase");
+  // Reset all cards first
+  allCards.forEach(c => {
+    c.classList.remove("showcase", "flipped");
+  });
+
+  // Activate clicked card
+  card.classList.add("showcase", "flipped");
+
   updateCarouselVisuals();
 
-  // Open linked devotion if any
+  // Open devotion if linked
   const devotionId = card.dataset.devotionId;
-  if (devotionId) toggleDevotion(document.getElementById(devotionId));
+  if (devotionId) {
+    toggleDevotion(document.getElementById(devotionId));
+  }
 });
 
 // ========================= DEVOTIONS =========================
