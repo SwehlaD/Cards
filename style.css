@@ -160,7 +160,9 @@ section h2 {
   font-weight: 700;
 }
 
-/* ========================= MUSIC CAROUSEL ========================= */
+/* ===========================
+MUSIC CAROUSEL
+=========================== */
 .music-scroll {
   display: flex;
   gap: 40px;
@@ -199,7 +201,7 @@ section h2 {
 }
 
 .release-card.flipped .album-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) !important;
 }
 
 .album-front,
@@ -210,7 +212,7 @@ section h2 {
   backface-visibility: hidden;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .album-front {
@@ -220,61 +222,60 @@ section h2 {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px) saturate(150%);
   -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255,255,255,0.2);
 }
 
 .album-back {
-  position: relative;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: var(--secondary-color);
-  transform: rotateY(180deg);
-  overflow: hidden;
-  pointer-events: auto;
-}
-
-/* full background image */
-.album-back img {
   position: absolute;
-  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+
+  /* This makes the background image fill the card */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /* optional overlay */
+  background-blend-mode: overlay;
+  background-color: rgba(255,255,255,0.05);
+}
+.album-back h3 { color:red; }
+.album-back::before { display: none; }
+
+.album-front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  backface-visibility: hidden;
-  z-index: 1;
-}
-
-/* overlay for readability */
-.album-back::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  user-select: none;
   pointer-events: none;
-  z-index: 2;
 }
 
-/* ========================= MUSIC BUTTONS ========================= */
 .album-back .music-links {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  width: 150px; /* adjust to fit buttons */
+  position: relative; /* ensures links appear above background */
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .album-back .music-links a {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 6px;
   text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: 500;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
@@ -284,39 +285,113 @@ section h2 {
 }
 
 .album-back .music-links a:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   color: var(--primary-color);
 }
 
-/* ========================= CAROUSEL BUTTONS ========================= */
+.release-card.showcase {
+  z-index: 10;
+  transform: translateZ(100px);
+  opacity: 1;
+}
+
+.release-card:not(.showcase) {
+  z-index: 1;
+  transform: translateZ(-80px);
+  opacity: 0.8;
+}
+
+/* ===========================
+CAROUSEL CONTROLS
+=========================== */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-rail {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.carousel-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+
+/* ===========================
+CAROUSEL BUTTONS
+=========================== */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.carousel-row {
+  display: flex; 
+  align-items: center;
+  position: relative;
+}
+
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(20, 15, 13, 0.7);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 211, 107, 0.35);
-  color: var(--primary-color);
-  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 56px;
   height: 56px;
   border-radius: 50%;
+
+  background: rgba(20, 15, 13, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 211, 107, 0.35);
+
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
   z-index: 20;
 }
 
-.carousel-btn.left { left: 20px; }
-.carousel-btn.right { right: 20px; }
+.carousel-btn::before {
+  content: "";
+  width: 14px;
+  height: 14px;
 
-.carousel-btn:hover { transform: translateY(-50%) scale(1.08); }
-.carousel-btn:active { transform: translateY(-50%) scale(0.95); }
+  border-top: 3px solid var(--primary-color);
+  border-right: 3px solid var(--primary-color);
 
-/* ========================= RESPONSIVE ========================= */
-@media (max-width: 768px) {
-  .release-card { width: 180px; height: 250px; }
-  .album-back .music-links { width: 120px; gap: 12px; }
+  position: absolute;       
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -50%) rotate(45deg);
 }
+
+.carousel-btn.left::before {
+  transform: translate(-40%, -50%) rotate(-135deg);
+}
+
+.carousel-btn.left {
+  left: 20px; 
+}
+
+.carousel-btn.right {
+  right: 20px; 
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 211, 107, 0.25);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
 /* ===========================
 DEVOTIONS
 =========================== */
@@ -324,19 +399,17 @@ DEVOTIONS
 #devotions.active { display: block; }
 
 .devotion {
-  display: none;
   background: var(--bg-dark-light);
   color: var(--secondary-color);
-  padding-top: 0;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-bottom: 25px;
-  margin-top: 0;
-  margin: 25px auto;
+  padding: 25px 30px 30px 25px;
+  margin: 0px auto;
   max-width: 700px;
   border-radius: 8px;
   text-align: left;
   overflow: hidden;
+}
+.devotion.hidden {
+  display: none;
 }
 
 .devotion.active { display: block; }
@@ -409,7 +482,8 @@ MOBILE STYLES
   .hero-lettering p { font-size: clamp(0.9rem, 4vw, 1.3rem); }
 
   section { padding: 60px 5%; }
-  .release-card { width: 180px; height: 250px; }
+  .release-card { width:250px; height: 350px; }
   .album-front img { height: 100%; }
-  .carousel-controls { display: none; }
+  .carousel-btn.left { display:none; }
+  .carousel-btn.right { display: none; }
 }
