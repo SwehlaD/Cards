@@ -171,7 +171,10 @@ MUSIC CAROUSEL
   -webkit-overflow-scrolling: touch;
   padding: 40px 15%;
   cursor: grab;
-  perspective: 1500px;
+  perspective: none;
+  scroll-behavior: smooth;
+  scroll-padding-left: 50%;
+  scroll-padding-right: 50%;  
 }
 
 .music-scroll:active {

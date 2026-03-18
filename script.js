@@ -71,47 +71,92 @@ updateGradient();
 
 // ========================= CAROUSEL =========================
 let allCards = [];
+let scrollTimeout;
 
 function initCarousel() {
   if (!UI.scrollContainer) return;
+
   allCards = Array.from(UI.scrollContainer.querySelectorAll(".release-card"));
   UI.scrollContainer.scrollLeft = 0;
+
   updateCarouselVisuals();
-  applyCardBackColors(); // set back colors once
+  applyCardBackColors?.();
 }
 
+// --- CENTER CALC (more accurate) ---
+function getCenteredCard() {
+  const container = UI.scrollContainer;
+  const containerCenter = container.scrollLeft + container.offsetWidth / 2;
+
+  let closest = null;
+  let closestDist = Infinity;
+
+  allCards.forEach(card => {
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    const dist = Math.abs(containerCenter - cardCenter);
+
+    if (dist < closestDist) {
+      closestDist = dist;
+      closest = card;
+    }
+  });
+
+  return closest;
+}
+
+// --- SNAP TO CENTER ---
+function snapToCenter() {
+  const card = getCenteredCard();
+  if (!card) return;
+
+  const container = UI.scrollContainer;
+  const target =
+    card.offsetLeft +
+    card.offsetWidth / 2 -
+    container.offsetWidth / 2;
+
+  container.scrollTo({ left: target, behavior: "smooth" });
+}
+
+// --- VISUAL UPDATE (lighter math) ---
 function updateCarouselVisuals() {
   if (!UI.scrollContainer) return;
 
-  const containerRect = UI.scrollContainer.getBoundingClientRect();
-  const containerMid = containerRect.left + containerRect.width / 2;
+  const container = UI.scrollContainer;
+  const center = container.scrollLeft + container.offsetWidth / 2;
 
   allCards.forEach(card => {
-    const rect = card.getBoundingClientRect();
-    const cardMid = rect.left + rect.width / 2;
-    const distance = Math.abs(cardMid - containerMid);
-    const maxDist = containerRect.width * 0.7;
-    const t = Math.min(distance / maxDist, 1);
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    const dist = Math.abs(center - cardCenter);
 
-    const scale = card.classList.contains("showcase") ? 1 : 1 - t * 0.45;
-    const opacity = card.classList.contains("showcase") ? 1 : 1 - t * 0.5;
+    const maxDist = container.offsetWidth * 0.6;
+    const t = Math.min(dist / maxDist, 1);
 
-    card.style.transform = `scale(${scale}) translateZ(${100 - t * 200}px)`;
+    const scale = card.classList.contains("showcase") ? 1 : 1 - t * 0.35;
+    const opacity = card.classList.contains("showcase") ? 1 : 1 - t * 0.4;
+
+    card.style.transform = `scale(${scale})`;
     card.style.opacity = opacity;
-    card.style.zIndex = card.classList.contains("showcase") ? 10 : 1;
 
     const inner = card.querySelector(".album-inner");
     if (inner) {
       inner.style.transform = card.classList.contains("flipped")
         ? "rotateY(180deg)"
-        : `rotateY(${((cardMid - containerMid) / maxDist) * 20}deg)`;
+        : `rotateY(${(cardCenter - center) / maxDist * 15}deg)`;
     }
   });
 }
 
+// --- SCROLL HANDLER (debounced + smooth) ---
 UI.scrollContainer?.addEventListener("scroll", () => {
   requestAnimationFrame(updateCarouselVisuals);
+
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    snapToCenter();
+  }, 120); // adjust for feel
 });
+
 
 // ========================= CARD CLICK =========================
 UI.scrollContainer?.addEventListener("click", e => {
