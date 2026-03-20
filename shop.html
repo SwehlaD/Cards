@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1A4766">
+  <title>Shop | Burden and Mercy</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* SHOP PAGE SPECIFIC */
+    body {
+      background: #140f0d;
+      color: var(--secondary-color);
+    }
+
+    .shop-header {
+      padding-top: 100px;
+      text-align: center;
+    }
+
+    .shop-header h1 {
+      font-family: var(--font-heading);
+      color: var(--primary-color);
+      letter-spacing: 0.08em;
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .shop-item {
+      background: var(--bg-dark-light);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .shop-item:hover {
+      transform: translateY(-6px);
+    }
+
+    .shop-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .shop-item h3 {
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    .shop-item p {
+      margin-bottom: 12px;
+    }
+
+    .shop-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--primary-color);
+      border: 1px solid rgba(255, 211, 107, 0.5);
+      transition: all 0.2s ease;
+    }
+
+    .shop-btn:hover {
+      background: rgba(255, 211, 107, 0.25);
+      color: #1a1411;
+    }
+
+    .sub-header-home {
+  height: 100dvh;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10dvh;
+}
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <ul id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#music">Music</a></li>
+    <li><a href="shop.html">Shop</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<div class="shop-header">
+  <h1>SHOP</h1>
+  <p>Support the mission</p>
+</div>
+
+<!-- PRODUCTS -->
+<div class="shop-grid">
+
+  <div class="shop-item">
+    <img src="shirt.jpeg" alt="Shirt">
+    <h3>Logo T-Shirt</h3>
+    <p>$25.00</p>
+    <a href="https://venmo.com" class="shop-btn" target="_blank">Venmo</a>
+    <a href="https://paypal.com" class="shop-btn" target="_blank">PayPal</a>
+  </div>
+
+  <div class="shop-item">
+    <img src="hoodie.webp" alt="Hoodie">
+    <h3>Signature Hoodie</h3>
+    <p>$45.00</p>
+    <a href="https://venmo.com" class="shop-btn" target="_blank">Venmo</a>
+    <a href="https://paypal.com" class="shop-btn" target="_blank">PayPal</a>    
+  </div>
+
+  <div class="shop-item">
+    <img src="hat.jpeg" alt="Hat">
+    <h3>Embroidered Hat</h3>
+    <p>$20.00</p>
+    <a href="https://venmo.com" class="shop-btn" target="_blank">Venmo</a>
+    <a href="https://paypal.com" class="shop-btn" target="_blank">PayPal</a>
+  </div>
+
+</div>
+
+</body>
+</html>

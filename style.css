@@ -449,6 +449,30 @@ DEVOTIONS
 
 .devotion.open .arrow { transform: rotate(180deg); }
 
+.social-section {
+  margin-top: 5px;
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+.social-section p {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.social-section a img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-section a:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+
 /* ===========================
 FOOTER
 =========================== */

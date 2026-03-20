@@ -1,0 +1,40 @@
+ body { background: #140f0d; color: var(--secondary-color); }
+  .shop-header { text-align:center; padding-top:100px; }
+  .shop-header h1 { font-family: var(--font-heading); color: var(--primary-color); letter-spacing:0.08em; }
+  .shop-header p { margin-top:10px; }
+
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0 20px;
+  }
+
+  .shop-item {
+    background: var(--bg-dark-light);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .shop-item:hover { transform: translateY(-6px); }
+
+  .shop-item img { width: 100%; border-radius:10px; margin-bottom:15px; }
+  .shop-item h3 { color: var(--primary-color); margin-bottom:5px; }
+  .shop-item p { margin-bottom:12px; }
+
+  .shop-btn {
+    display: inline-block;
+    padding:8px 16px;
+    border-radius:6px;
+    text-decoration:none;
+    color: var(--primary-color);
+    border:1px solid rgba(255,211,107,0.5);
+    transition: all 0.2s ease;
+  }
+  .shop-btn:hover {
+    background: rgba(255,211,107,0.25);
+    color:#1a1411;
+  }

@@ -210,7 +210,9 @@ function toggleDevotion(targetDev) {
     if (body) body.style.maxHeight = body.scrollHeight + "px";
   } else {
     UI.devotionsSection?.classList.remove("active");
+    
     allCards.forEach(c => c.classList.remove("showcase", "flipped"));
+
   }
 }
 
