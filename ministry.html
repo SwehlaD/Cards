@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1A4766">
-  <title>Shop | Burden and Mercy</title>
+  <title> Ministries | Burden and Mercy</title>
+ <!-- Favicon -->
+ <link rel="icon" type="image/png" sizes="32x32" href="fav32x32.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,24 +18,24 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* SHOP PAGE SPECIFIC */
+    /* MINISTRIES PAGE SPECIFIC */
     body {
       background: #140f0d;
       color: var(--secondary-color);
     }
 
-    .shop-header {
+    .display-header {
       padding-top: 100px;
       text-align: center;
     }
 
-    .shop-header h1 {
+    .display-header h1 {
       font-family: var(--font-heading);
       color: var(--primary-color);
       letter-spacing: 0.08em;
     }
 
-    .shop-grid {
+    .display-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 30px;
@@ -42,7 +44,7 @@
       padding: 0 20px;
     }
 
-    .shop-item {
+    .display-item {
       background: var(--bg-dark-light);
       border-radius: 12px;
       padding: 20px;
@@ -50,26 +52,26 @@
       transition: transform 0.3s ease;
     }
 
-    .shop-item:hover {
+    .display-item:hover {
       transform: translateY(-6px);
     }
 
-    .shop-item img {
+    .display-item img {
       width: 100%;
       border-radius: 10px;
       margin-bottom: 15px;
     }
 
-    .shop-item h3 {
+    .display-item h3 {
       color: var(--primary-color);
       margin-bottom: 5px;
     }
 
-    .shop-item p {
+    .display-item p {
       margin-bottom: 12px;
     }
 
-    .shop-btn {
+    .display-btn {
       display: inline-block;
       padding: 8px 16px;
       border-radius: 6px;
@@ -79,7 +81,7 @@
       transition: all 0.2s ease;
     }
 
-    .shop-btn:hover {
+    .display-btn:hover {
       background: rgba(255, 211, 107, 0.25);
       color: #1a1411;
     }
@@ -105,41 +107,44 @@
   <ul id="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#music">Music</a></li>
-    <li><a href="shop.html">Shop</a></li>
+    <li><a href="Ministry.html">Ministries</a></li>
   </ul>
 </nav>
 
 <!-- HEADER -->
-<div class="shop-header">
-  <h1>SHOP</h1>
-  <p>Support the mission</p>
+<div class="display-header">
+  <h1>Support our Mininstries</h1>
+  <p>Help us continue our work and make a difference in the world.</p>
 </div>
 
-<!-- PRODUCTS -->
-<div class="shop-grid">
+<div class="display-grid">
 
-  <div class="shop-item">
-    <img src="shirt.jpeg" alt="Shirt">
-    <h3>Logo T-Shirt</h3>
-    <p>$25.00</p>
-    <a href="https://venmo.com" class="shop-btn" target="_blank">Venmo</a>
-    <a href="https://paypal.com" class="shop-btn" target="_blank">PayPal</a>
+  <div class="display-item">
+    <img src="shilo.jpg" alt="Shilo">
+    <h3>Camp Shilo</h3>
+    <p>Support our summer camp ministry and help us provide a safe and fun environment for kids to grow in their faith.</p>
+    <a href="https://campshilohnh.org/donate/" class="display-btn" target="_blank">Donate</a>
   </div>
 
-  <div class="shop-item">
-    <img src="hoodie.webp" alt="Hoodie">
-    <h3>Signature Hoodie</h3>
-    <p>$45.00</p>
-    <a href="https://venmo.com" class="shop-btn" target="_blank">Venmo</a>
-    <a href="https://paypal.com" class="shop-btn" target="_blank">PayPal</a>    
+  <div class="display-item">
+    <img src="nathan.jpg" alt="Nathan">
+    <h3>The Wolter's Family</h3>
+    <p>Support the Wolter's family and help us provide for their needs attending Seminary.</p>
+    <a href="https://venmo.com" class="display-btn" target="_blank">Donate</a>
   </div>
 
-  <div class="shop-item">
-    <img src="hat.jpeg" alt="Hat">
-    <h3>Embroidered Hat</h3>
-    <p>$20.00</p>
-    <a href="https://venmo.com" class="shop-btn" target="_blank">Venmo</a>
-    <a href="https://paypal.com" class="shop-btn" target="_blank">PayPal</a>
+  <div class="display-item">
+    <img src="Dylan.jpg" alt="Dylan">
+    <h3>Williford Family Missionary</h3>
+    <p>Support the Williford family and help us provide for their needs as missionaries.</p>
+    <a href="https://venmo.com" class="display-btn" target="_blank">Donate</a>
+  </div>
+
+    <div class="display-item">
+    <img src="gordoncopy.png" alt="Gordon">
+    <h3>Gordon College</h3>
+    <p>Support the Gordon College mission and students</p>
+    <a href="https://www.gordon.edu/giving/gordon-fund" class="display-btn" target="_blank">Donate</a>
   </div>
 
 </div>
