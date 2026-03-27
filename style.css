@@ -495,7 +495,7 @@ MOBILE STYLES
     background: var(--bg-nav-mobile);
     position: absolute;
     top: 100%;
-    left: 0;
+    right: 0;
     width: max-content;
     min-width: 120px;
     box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
