@@ -275,7 +275,7 @@ MUSIC CAROUSEL
 .album-back .music-links a {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 20px;
   text-decoration: none;
   color: var(--secondary-color);
   font-weight: 500;
